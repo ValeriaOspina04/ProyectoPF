@@ -78,54 +78,249 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       drawer: Drawer(
-        child: Column(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: const Text('Nombre Usuario'),
-              accountEmail: const Text('usuario@email.com'),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(Icons.person, size: 40),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF1E1E2C), Color(0xFF3A1C71)], // 🎨 Fondo oscuro degradado
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF3A1C71), Color(0xFF2C5364)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                accountName: const Text(
+                  'Nombre Usuario',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                accountEmail: const Text(
+                  'usuario@email.com',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white70,
+                  ),
+                ),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, size: 40, color: Colors.deepPurple),
+                ),
               ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.book),
-              title: const Text('Reservas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/reservas');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.store),
-              title: const Text('Establecimientos'),
-              onTap: () {
-                Navigator.pushNamed(context, '/establecimientos');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.rate_review),
-              title: const Text('Reseñas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/resenas');
-              },
-            ),
-            const Spacer(),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Cerrar sesión'),
-              onTap: () {
-                // lógica de cerrar sesión
-                Navigator.pop(context);
-              },
-            ),
-          ],
+
+              // Opciones de menú con diseño mejorado
+              ListTile(
+                leading: const Icon(Icons.book, color: Colors.white),
+                title: const Text(
+                  'Reservas',
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/reservas');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.store, color: Colors.white),
+                title: const Text(
+                  'Establecimientos',
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/establecimientos');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.rate_review, color: Colors.white),
+                title: const Text(
+                  'Reseñas',
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/resenas');
+                },
+              ),
+
+              const Spacer(),
+
+              const Divider(color: Colors.white54, thickness: 1, indent: 20, endIndent: 20),
+
+              ListTile(
+                leading: const Icon(Icons.logout, color: Colors.redAccent),
+                title: const Text(
+                  'Cerrar sesión',
+                  style: TextStyle(color: Colors.redAccent, fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
+
       
-      body: const Center(
-        child: Text(
-          'Bienvenido a Party Finder 🎉',
-          style: TextStyle(fontSize: 20),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF1E1E2C), // Azul oscuro / noche
+              Color(0xFF3A1C71), // Morado profundo
+              Color(0xFF2C5364), // Azul verdoso elegante
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  "Destacados de la semana",
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // 👈 ahora el texto será blanco sobre fondo
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              SizedBox(
+                height: 220,
+                child: PageView(
+                  controller: PageController(viewportFraction: 0.8),
+                  children: [
+                    _buildCarouselCard("assets/laNoche.jpeg", "Bar La Noche", 4.5),
+                    _buildCarouselCard("assets/clubFiesta.jpg", "Club Fiesta", 4.0),
+                    _buildCarouselCard("assets/vip.jpg", "Lounge VIP", 5.0),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  "Eventos próximos",
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // 👈 también en blanco
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.music_note, color: Colors.purpleAccent),
+                    title: Text("Concierto DJ Nights",
+                        style: TextStyle(color: Colors.white)),
+                    subtitle: Text(
+                      "Viernes 10 de Septiembre - Club Fiesta",
+                      style: TextStyle(color: Colors.white70),
+                    ),
+                    trailing: Icon(Icons.chevron_right, color: Colors.white),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.local_bar, color: Colors.purpleAccent),
+                    title:
+                        Text("Happy Hour", style: TextStyle(color: Colors.white)),
+                    subtitle: Text(
+                      "Todos los jueves - Bar La Noche",
+                      style: TextStyle(color: Colors.white70),
+                    ),
+                    trailing: Icon(Icons.chevron_right, color: Colors.white),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCarouselCard(String img, String title, double calificacion) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        image: DecorationImage(
+          image: AssetImage(img),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 6,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            colors: [Colors.black.withOpacity(0.6), Colors.transparent],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Row(
+                children: List.generate(5, (i) {
+                  if (i < calificacion.floor()) {
+                    return const Icon(Icons.star, color: Colors.amber, size: 18);
+                  } else if (i < calificacion) {
+                    return const Icon(Icons.star_half, color: Colors.amber, size: 18);
+                  } else {
+                    return const Icon(Icons.star_border, color: Colors.amber, size: 18);
+                  }
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );
