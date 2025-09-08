@@ -26,26 +26,25 @@ class Establecimientos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Establecimientos'),
+        title: const Text("Establecimientos"),
         centerTitle: true,
-        // Si tienes flexibleSpace (degradado en AppBar) lo dejas aquí,
-        // el body con degradado va abajo.
-        backgroundColor: const Color.fromARGB(255, 8, 3, 81),
-        elevation: 6,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.deepPurple, Color.fromARGB(255, 4, 70, 185)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
 
-      // ---------- BODY con degradado y lista ----------
+      
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 0, 0, 0), // oscuro arriba
-              Color.fromARGB(255, 59, 55, 255),
-              Color.fromARGB(255, 114, 43, 236), // más claro abajo
+            colors: [Color(0xFF1E1E2C), Color(0xFF3A1C71)
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -68,7 +67,7 @@ class Establecimientos extends StatelessWidget {
             print('DEBUG lugar $index -> nombre: $nombre, imagen: $imagenPath, cal: $cal');
 
             return Card(
-              color: const Color(0xFFFDF7FD),
+              color: const Color.fromARGB(203, 216, 216, 216),
               margin: const EdgeInsets.symmetric(vertical: 10),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
               elevation: 6,

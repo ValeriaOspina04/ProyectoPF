@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyectopf/establecimientos.dart';
+import 'package:proyectopf/resenas.dart';
 import 'pantallaTemp.dart';
 import 'login.dart';
 
@@ -18,10 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Party Finder',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
-          primary: Colors.deepPurple,
-          secondary: Colors.blueAccent,
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0),
         ),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -42,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/home':  (context) => const MyHomePage(title: 'Party Finder'),
         '/establecimientos': (context) => const Establecimientos(),
+        '/resenas': (context) => const Resenas(),
       },
 
     );
