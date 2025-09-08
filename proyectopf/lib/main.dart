@@ -24,6 +24,18 @@ class MyApp extends StatelessWidget {
           secondary: Colors.blueAccent,
         ),
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 1, 16, 96),
+          elevation: 6,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: Colors.white),
+          titleTextStyle: TextStyle(
+            color: Colors.white,       // 🔥 Color del texto en blanco
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            letterSpacing: 1.2,
+          ),
+        ),
       ),
       home: const PantallaTemp(),
       routes: {
@@ -51,10 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: const TextStyle(color: Colors.white, fontSize: 22),
-        ),
+        title: Text(widget.title),
         centerTitle: true,
         // 🎨 Degradado
         flexibleSpace: Container(
@@ -112,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      
       body: const Center(
         child: Text(
           'Bienvenido a Party Finder 🎉',
