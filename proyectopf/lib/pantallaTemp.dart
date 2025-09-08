@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'main.dart'; // 👈 Para ir al Home después
+import 'main.dart'; // Para ir al Home después
+
+bool isLoggedIn = false; 
 
 class PantallaTemp extends StatefulWidget {
   const PantallaTemp({super.key});
@@ -15,12 +17,7 @@ class _PantallaTempState extends State<PantallaTemp> {
     super.initState();
     // ⏳ Después de 5 segundos, volvemos al Home
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MyHomePage(title: 'Party Finder'),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, '/login');
     });
   }
 
@@ -29,7 +26,7 @@ class _PantallaTempState extends State<PantallaTemp> {
     return Scaffold(
       body: SizedBox.expand(
         child: Image.asset(
-          "assets/fondoP.png", // 👈 tu splash ya con logo y texto
+          "assets/fondoP.png", 
           fit: BoxFit.cover,   // que cubra toda la pantalla
         ),
       ),

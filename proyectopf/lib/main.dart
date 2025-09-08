@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pantallaTemp.dart';
+import 'login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +25,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const PantallaTemp(),
+      routes: {
+        '/login': (context) => const Login(),
+        '/home':  (context) => const MyHomePage(title: 'Party Finder'),
+      },
 
     );
   }
