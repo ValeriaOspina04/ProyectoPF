@@ -54,3 +54,7 @@ flutter:
   uses-material-design: true
   assets:             # Aquí declaras tus imágenes
     - assets/fondoP.png
+    - assets/partyF.png
+    - assets/clubFiesta.jpg
+    - assets/laNoche.jpeg
+    - assets/vip.jpg

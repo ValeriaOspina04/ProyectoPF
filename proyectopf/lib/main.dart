@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectopf/establecimientos.dart';
 import 'pantallaTemp.dart';
 import 'login.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const Login(),
         '/home':  (context) => const MyHomePage(title: 'Party Finder'),
+        '/establecimientos': (context) => const Establecimientos(),
       },
 
     );

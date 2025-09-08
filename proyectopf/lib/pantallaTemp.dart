@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'main.dart'; // Para ir al Home después
+// Para ir al Home después
 
 bool isLoggedIn = false; 
 
